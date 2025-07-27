@@ -29,19 +29,19 @@ const CreditCardBlock = ({
   className = ""
 }: CreditCardProps) => {
   return (
-    <Card className={`relative group hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border-border bg-card ${className}`}>
+    <Card className={`relative group hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 hover:scale-[1.02] border-border bg-card card-premium ${className}`}>
       {isPopular && (
-        <div className="absolute -top-3 left-4 z-10">
-          <Badge variant="accent" className="font-medium px-3 py-1 shadow-sm">
-            <TrendingUp className="w-3 h-3 mr-1" />
+        <div className="absolute -top-4 left-6 z-10">
+          <Badge variant="accent" className="font-bold px-4 py-2 shadow-lg text-white bg-gradient-to-r from-accent to-cta">
+            <TrendingUp className="w-4 h-4 mr-2" />
             Most Popular
           </Badge>
         </div>
       )}
       
       {highlight && (
-        <div className="absolute -top-3 right-4 z-10">
-          <Badge variant="outline" className="bg-primary text-primary-foreground font-medium px-3 py-1">
+        <div className="absolute -top-4 right-6 z-10">
+          <Badge variant="outline" className="bg-primary text-primary-foreground font-bold px-4 py-2 shadow-lg border-accent">
             {highlight}
           </Badge>
         </div>
@@ -104,19 +104,19 @@ const CreditCardBlock = ({
         </div>
       </CardContent>
 
-      <CardFooter className="pt-4">
-        <div className="flex w-full gap-3">
+      <CardFooter className="pt-6">
+        <div className="flex w-full gap-4">
           <Button 
             variant="outline" 
             size="sm" 
-            className="flex-1 font-medium border-border hover:bg-secondary transition-all duration-200"
+            className="flex-1 font-bold border-2 border-muted hover:bg-secondary transition-all duration-300 hover:scale-105"
           >
             View Details
           </Button>
           <Button 
             variant="cta"
             size="sm" 
-            className="flex-1 font-medium"
+            className="flex-1 font-bold btn-cta relative overflow-hidden"
           >
             Apply Now
           </Button>

@@ -96,14 +96,14 @@ const CreditCardListing = () => {
     <section className="py-16 bg-background">
       <div className="container mx-auto px-6 max-w-7xl">
         {/* Header */}
-        <div className="text-center mb-12">
-          <Badge className="mb-4 bg-primary-blue-light text-primary-blue border-primary-blue/20">
-            Credit Cards
+        <div className="text-center mb-16">
+          <Badge className="mb-6 bg-primary-blue-light text-primary-blue border-accent/20 px-6 py-2 text-sm font-bold">
+            Premium Credit Cards
           </Badge>
-          <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
+          <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6 font-premium tracking-tight">
             Find Your Perfect Credit Card
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             Compare the best credit cards with detailed information on rewards, fees, and benefits.
           </p>
         </div>
@@ -122,8 +122,8 @@ const CreditCardListing = () => {
         </div>
 
         {/* Filters */}
-        <div className="mb-8 bg-card rounded-lg border border-border p-6">
-          <div className="flex flex-col lg:flex-row gap-4 items-start lg:items-center justify-between">
+        <div className="mb-12 card-premium rounded-xl border border-accent/10 p-8 bg-gradient-to-r from-background to-primary-blue-light/30">
+          <div className="flex flex-col lg:flex-row gap-6 items-start lg:items-center justify-between">
             {/* Basic Filters */}
             <div className="flex flex-wrap gap-4 items-center">
               <Select value={selectedCategory} onValueChange={setSelectedCategory}>

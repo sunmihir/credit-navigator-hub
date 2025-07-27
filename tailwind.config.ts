@@ -21,6 +21,7 @@ export default {
 			fontFamily: {
 				inter: ['Inter', 'system-ui', 'sans-serif'],
 				display: ['Inter Display', 'Inter', 'system-ui', 'sans-serif'],
+				premium: ['SF Pro Display', 'Inter', 'system-ui', 'sans-serif'],
 			},
 			colors: {
 				border: 'hsl(var(--border))',
