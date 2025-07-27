@@ -79,8 +79,9 @@ const CreditCardListing = () => {
     return creditCards.filter(card => {
       const matchesSearch = card.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
                            card.category.toLowerCase().includes(searchTerm.toLowerCase());
-      const matchesCategory = !selectedCategory || card.category.toLowerCase().includes(selectedCategory.toLowerCase());
-      const matchesFee = !selectedFeeRange || (
+      const matchesCategory = selectedCategory === "all" || !selectedCategory || 
+                             card.category.toLowerCase().includes(selectedCategory.toLowerCase());
+      const matchesFee = selectedFeeRange === "any" || !selectedFeeRange || (
         selectedFeeRange === "no-fee" && card.annualFee === "$0" ||
         selectedFeeRange === "low" && card.annualFee !== "$0" && parseInt(card.annualFee.replace('$', '')) < 100 ||
         selectedFeeRange === "mid" && parseInt(card.annualFee.replace('$', '')) >= 100 && parseInt(card.annualFee.replace('$', '')) <= 300 ||
@@ -130,7 +131,7 @@ const CreditCardListing = () => {
                   <SelectValue placeholder="Card Category" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="">All Categories</SelectItem>
+                  <SelectItem value="all">All Categories</SelectItem>
                   <SelectItem value="travel">Travel Rewards</SelectItem>
                   <SelectItem value="cashback">Cashback</SelectItem>
                   <SelectItem value="dining">Dining Rewards</SelectItem>
@@ -143,7 +144,7 @@ const CreditCardListing = () => {
                   <SelectValue placeholder="Annual Fee" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="">Any Fee</SelectItem>
+                  <SelectItem value="any">Any Fee</SelectItem>
                   <SelectItem value="no-fee">No Annual Fee</SelectItem>
                   <SelectItem value="low">Under $100</SelectItem>
                   <SelectItem value="mid">$100 - $300</SelectItem>
@@ -262,8 +263,8 @@ const CreditCardListing = () => {
               variant="outline" 
               onClick={() => {
                 setSearchTerm("");
-                setSelectedCategory("");
-                setSelectedFeeRange("");
+                setSelectedCategory("all");
+                setSelectedFeeRange("any");
               }}
             >
               Clear Filters
