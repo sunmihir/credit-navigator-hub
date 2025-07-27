@@ -6,31 +6,36 @@
 
 @layer base {
   :root {
-    /* Core fintech colors - professional blues and whites */
+    /* Fintech Color System - Trust & Credibility */
     --background: 0 0% 100%;
-    --foreground: 210 11% 15%;
+    --foreground: 0 0% 11%;
 
     --card: 0 0% 100%;
-    --card-foreground: 210 11% 15%;
+    --card-foreground: 0 0% 11%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 210 11% 15%;
+    --popover-foreground: 0 0% 11%;
 
-    /* Primary - Professional fintech blue */
-    --primary: 214 100% 97%;
-    --primary-foreground: 214 84% 12%;
-    --primary-blue: 214 84% 12%;
-    --primary-blue-light: 214 100% 97%;
+    /* Primary - Deep Navy (#1A237E) for trust & stability */
+    --primary: 233 67% 30%;
+    --primary-foreground: 0 0% 100%;
+    --primary-blue: 233 67% 30%;
+    --primary-blue-light: 233 67% 95%;
 
-    /* Secondary - Elegant grays */
-    --secondary: 210 11% 96%;
-    --secondary-foreground: 210 11% 15%;
+    /* Accent - Mint Green (#00B894) for growth & freshness */
+    --accent: 168 100% 36%;
+    --accent-foreground: 0 0% 100%;
 
-    --muted: 210 11% 96%;
-    --muted-foreground: 210 11% 64%;
+    /* CTA - Action Blue (#3A86FF) for calls-to-action */
+    --cta: 218 100% 62%;
+    --cta-foreground: 0 0% 100%;
 
-    --accent: 47 96% 89%;
-    --accent-foreground: 47 84% 25%;
+    /* Secondary - Clean grays */
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 0 0% 11%;
+
+    --muted: 220 14% 96%;
+    --muted-foreground: 0 0% 43%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 210 40% 98%;

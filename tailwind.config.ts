@@ -34,6 +34,10 @@ export default {
 					blue: 'hsl(var(--primary-blue))',
 					'blue-light': 'hsl(var(--primary-blue-light))'
 				},
+				cta: {
+					DEFAULT: 'hsl(var(--cta))',
+					foreground: 'hsl(var(--cta-foreground))'
+				},
 				secondary: {
 					DEFAULT: 'hsl(var(--secondary))',
 					foreground: 'hsl(var(--secondary-foreground))'
