@@ -6,29 +6,28 @@ import heroImage from "@/assets/hero-credit-card.jpg";
 const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-primary-blue-light via-background to-background">
-      {/* Premium animated background elements */}
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-20 left-20 w-80 h-80 bg-accent rounded-full blur-3xl animate-pulse hero-glow"></div>
-        <div className="absolute bottom-20 right-20 w-96 h-96 bg-cta rounded-full blur-3xl animate-pulse delay-1000 hero-glow"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary rounded-full blur-[100px] opacity-5"></div>
+      {/* Animated background elements */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute top-20 left-20 w-64 h-64 bg-primary-blue rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-20 right-20 w-96 h-96 bg-accent rounded-full blur-3xl animate-pulse delay-1000"></div>
       </div>
       
       <div className="container mx-auto px-6 py-20 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">
           {/* Content Section */}
-          <div className="text-center lg:text-left fade-in-premium">
-            <div className="inline-flex items-center gap-2 bg-primary-blue-light border border-accent/20 rounded-full px-6 py-3 mb-8 premium-border">
-              <CreditCard className="w-5 h-5 text-accent" />
-              <span className="text-sm font-semibold text-primary tracking-wide">Trusted by 50,000+ users</span>
+          <div className="text-center lg:text-left fade-in-up">
+            <div className="inline-flex items-center gap-2 bg-primary-blue-light border border-primary-blue/20 rounded-full px-4 py-2 mb-6">
+              <CreditCard className="w-4 h-4 text-primary-blue" />
+              <span className="text-sm font-medium text-primary-blue">Trusted by 50,000+ users</span>
             </div>
             
-            <h1 className="text-5xl lg:text-7xl font-bold mb-8 leading-tight font-premium tracking-tight">
+            <h1 className="text-5xl lg:text-6xl font-bold mb-6 leading-tight">
               Find Your
               <span className="text-gradient block">Perfect Credit Card</span>
               in Minutes
             </h1>
             
-            <p className="text-xl lg:text-2xl text-muted-foreground mb-10 max-w-2xl leading-relaxed">
+            <p className="text-xl text-muted-foreground mb-8 max-w-lg">
               Discover the best credit cards tailored to your spending habits. 
               Smart recommendations, real savings, zero hassle.
             </p>
@@ -37,17 +36,17 @@ const Hero = () => {
               <Link to="/selection">
                 <Button 
                   size="lg" 
-                  className="btn-premium text-white px-10 py-6 text-lg font-bold group shadow-xl"
+                  className="btn-primary text-white px-8 py-4 text-lg font-semibold group"
                 >
-                  Find Your Perfect Card
-                  <ArrowRight className="ml-3 w-6 h-6 group-hover:translate-x-2 transition-transform duration-300" />
+                  Find Your First Credit Card
+                  <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </Link>
               
               <Button 
                 variant="outline" 
                 size="lg" 
-                className="px-10 py-6 text-lg font-bold border-2 border-accent text-accent hover:bg-accent hover:text-white transition-all duration-300 hover:scale-105"
+                className="px-8 py-4 text-lg font-semibold border-2 border-primary-blue text-primary-blue hover:bg-primary-blue hover:text-white"
               >
                 Calculate Savings
               </Button>
@@ -72,21 +71,18 @@ const Hero = () => {
             </div>
           </div>
           
-          {/* Premium Hero Image */}
-          <div className="relative scale-in-premium">
+          {/* Hero Image */}
+          <div className="relative scale-in">
             <div className="relative">
               <img 
                 src={heroImage}
                 alt="Premium Credit Card"
-                className="credit-card-premium w-full max-w-lg mx-auto"
+                className="credit-card-float w-full max-w-lg mx-auto drop-shadow-2xl"
               />
               
-              {/* Premium floating cards effect */}
-              <div className="absolute -top-6 -left-6 w-24 h-16 bg-gradient-to-r from-accent to-cta rounded-xl opacity-90 credit-card-premium delay-1000 shadow-xl"></div>
-              <div className="absolute -bottom-6 -right-6 w-24 h-16 bg-gradient-to-r from-cta to-primary rounded-xl opacity-90 credit-card-premium delay-2000 shadow-xl"></div>
-              
-              {/* Glow effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-accent/20 to-cta/20 rounded-2xl blur-xl scale-110 opacity-60"></div>
+              {/* Floating cards effect */}
+              <div className="absolute -top-4 -left-4 w-20 h-12 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg opacity-80 credit-card-float delay-1000"></div>
+              <div className="absolute -bottom-4 -right-4 w-20 h-12 bg-gradient-to-r from-green-500 to-blue-500 rounded-lg opacity-80 credit-card-float delay-2000"></div>
             </div>
           </div>
         </div>

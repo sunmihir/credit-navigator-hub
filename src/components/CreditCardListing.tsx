@@ -1,17 +1,12 @@
-import { useState, useMemo } from "react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
-import { Filter, SlidersHorizontal, Search } from "lucide-react";
-import { Input } from "@/components/ui/input";
+import { Filter, SlidersHorizontal } from "lucide-react";
 import CreditCardBlock from "./CreditCardBlock";
 
 const CreditCardListing = () => {
   const [showAdvancedFilters, setShowAdvancedFilters] = useState(false);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("");
-  const [selectedFeeRange, setSelectedFeeRange] = useState("");
-  const [visibleCards, setVisibleCards] = useState(6);
 
   const creditCards = [
     {
@@ -74,64 +69,32 @@ const CreditCardListing = () => {
     }
   ];
 
-  // Filter logic
-  const filteredCards = useMemo(() => {
-    return creditCards.filter(card => {
-      const matchesSearch = card.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                           card.category.toLowerCase().includes(searchTerm.toLowerCase());
-      const matchesCategory = selectedCategory === "all" || !selectedCategory || 
-                             card.category.toLowerCase().includes(selectedCategory.toLowerCase());
-      const matchesFee = selectedFeeRange === "any" || !selectedFeeRange || (
-        selectedFeeRange === "no-fee" && card.annualFee === "$0" ||
-        selectedFeeRange === "low" && card.annualFee !== "$0" && parseInt(card.annualFee.replace('$', '')) < 100 ||
-        selectedFeeRange === "mid" && parseInt(card.annualFee.replace('$', '')) >= 100 && parseInt(card.annualFee.replace('$', '')) <= 300 ||
-        selectedFeeRange === "high" && parseInt(card.annualFee.replace('$', '')) > 300
-      );
-      
-      return matchesSearch && matchesCategory && matchesFee;
-    });
-  }, [searchTerm, selectedCategory, selectedFeeRange]);
-
   return (
     <section className="py-16 bg-background">
       <div className="container mx-auto px-6 max-w-7xl">
         {/* Header */}
-        <div className="text-center mb-16">
-          <Badge className="mb-6 bg-primary-blue-light text-primary-blue border-accent/20 px-6 py-2 text-sm font-bold">
-            Premium Credit Cards
+        <div className="text-center mb-12">
+          <Badge className="mb-4 bg-primary-blue-light text-primary-blue border-primary-blue/20">
+            Credit Cards
           </Badge>
-          <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6 font-premium tracking-tight">
+          <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
             Find Your Perfect Credit Card
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Compare the best credit cards with detailed information on rewards, fees, and benefits.
           </p>
         </div>
 
-        {/* Search Bar */}
-        <div className="mb-8">
-          <div className="relative max-w-md mx-auto">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
-            <Input
-              placeholder="Search credit cards..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-10 bg-background border-border"
-            />
-          </div>
-        </div>
-
         {/* Filters */}
-        <div className="mb-12 card-premium rounded-xl border border-accent/10 p-8 bg-gradient-to-r from-background to-primary-blue-light/30">
-          <div className="flex flex-col lg:flex-row gap-6 items-start lg:items-center justify-between">
+        <div className="mb-8 bg-card rounded-lg border border-border p-6">
+          <div className="flex flex-col lg:flex-row gap-4 items-start lg:items-center justify-between">
             {/* Basic Filters */}
             <div className="flex flex-wrap gap-4 items-center">
-              <Select value={selectedCategory} onValueChange={setSelectedCategory}>
+              <Select>
                 <SelectTrigger className="w-[180px]">
                   <SelectValue placeholder="Card Category" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="all">All Categories</SelectItem>
                   <SelectItem value="travel">Travel Rewards</SelectItem>
                   <SelectItem value="cashback">Cashback</SelectItem>
                   <SelectItem value="dining">Dining Rewards</SelectItem>
@@ -139,12 +102,11 @@ const CreditCardListing = () => {
                 </SelectContent>
               </Select>
               
-              <Select value={selectedFeeRange} onValueChange={setSelectedFeeRange}>
+              <Select>
                 <SelectTrigger className="w-[160px]">
                   <SelectValue placeholder="Annual Fee" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="any">Any Fee</SelectItem>
                   <SelectItem value="no-fee">No Annual Fee</SelectItem>
                   <SelectItem value="low">Under $100</SelectItem>
                   <SelectItem value="mid">$100 - $300</SelectItem>
@@ -229,11 +191,7 @@ const CreditCardListing = () => {
         {/* Results Count */}
         <div className="flex items-center justify-between mb-6">
           <p className="text-muted-foreground">
-            Showing <span className="font-medium text-foreground">{filteredCards.slice(0, visibleCards).length}</span> of{" "}
-            <span className="font-medium text-foreground">{filteredCards.length}</span> credit cards
-            {searchTerm && (
-              <span> matching "<span className="font-medium text-foreground">{searchTerm}</span>"</span>
-            )}
+            Showing <span className="font-medium text-foreground">{creditCards.length}</span> credit cards
           </p>
           <Select>
             <SelectTrigger className="w-[180px]">
@@ -250,41 +208,21 @@ const CreditCardListing = () => {
 
         {/* Credit Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredCards.slice(0, visibleCards).map((card, index) => (
-            <CreditCardBlock key={`${card.name}-${index}`} {...card} />
+          {creditCards.map((card, index) => (
+            <CreditCardBlock key={index} {...card} />
           ))}
         </div>
 
-        {/* No Results */}
-        {filteredCards.length === 0 && (
-          <div className="text-center py-12">
-            <p className="text-muted-foreground text-lg mb-4">No credit cards match your search criteria</p>
-            <Button 
-              variant="outline" 
-              onClick={() => {
-                setSearchTerm("");
-                setSelectedCategory("all");
-                setSelectedFeeRange("any");
-              }}
-            >
-              Clear Filters
-            </Button>
-          </div>
-        )}
-
         {/* Load More */}
-        {filteredCards.length > visibleCards && (
-          <div className="text-center mt-12">
-            <Button 
-              variant="outline" 
-              size="lg"
-              className="px-8 font-medium"
-              onClick={() => setVisibleCards(prev => prev + 6)}
-            >
-              Load More Cards ({filteredCards.length - visibleCards} remaining)
-            </Button>
-          </div>
-        )}
+        <div className="text-center mt-12">
+          <Button 
+            variant="outline" 
+            size="lg"
+            className="px-8 font-medium"
+          >
+            Load More Cards
+          </Button>
+        </div>
       </div>
     </section>
   );

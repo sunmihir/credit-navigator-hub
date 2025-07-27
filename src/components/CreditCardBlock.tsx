@@ -1,7 +1,7 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
-import { Star, Shield, Plane, Gift, TrendingUp } from "lucide-react";
+import { Star, Shield, Plane, Gift } from "lucide-react";
 
 interface CreditCardProps {
   name: string;
@@ -13,7 +13,6 @@ interface CreditCardProps {
   rating: number;
   highlight?: string;
   isPopular?: boolean;
-  className?: string;
 }
 
 const CreditCardBlock = ({ 
@@ -25,23 +24,21 @@ const CreditCardBlock = ({
   loungeAccess, 
   rating,
   highlight,
-  isPopular = false,
-  className = ""
+  isPopular = false 
 }: CreditCardProps) => {
   return (
-    <Card className={`relative group hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 hover:scale-[1.02] border-border bg-card card-premium ${className}`}>
+    <Card className="relative group hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border-border bg-card">
       {isPopular && (
-        <div className="absolute -top-4 left-6 z-10">
-          <Badge variant="accent" className="font-bold px-4 py-2 shadow-lg text-white bg-gradient-to-r from-accent to-cta">
-            <TrendingUp className="w-4 h-4 mr-2" />
+        <div className="absolute -top-3 left-4 z-10">
+          <Badge className="bg-accent text-accent-foreground font-medium px-3 py-1">
             Most Popular
           </Badge>
         </div>
       )}
       
       {highlight && (
-        <div className="absolute -top-4 right-6 z-10">
-          <Badge variant="outline" className="bg-primary text-primary-foreground font-bold px-4 py-2 shadow-lg border-accent">
+        <div className="absolute -top-3 right-4 z-10">
+          <Badge variant="outline" className="bg-primary text-primary-foreground font-medium px-3 py-1">
             {highlight}
           </Badge>
         </div>
@@ -104,19 +101,18 @@ const CreditCardBlock = ({
         </div>
       </CardContent>
 
-      <CardFooter className="pt-6">
-        <div className="flex w-full gap-4">
+      <CardFooter className="pt-4">
+        <div className="flex w-full gap-3">
           <Button 
             variant="outline" 
             size="sm" 
-            className="flex-1 font-bold border-2 border-muted hover:bg-secondary transition-all duration-300 hover:scale-105"
+            className="flex-1 font-medium border-border hover:bg-secondary"
           >
             View Details
           </Button>
           <Button 
-            variant="cta"
             size="sm" 
-            className="flex-1 font-bold btn-cta relative overflow-hidden"
+            className="flex-1 bg-cta hover:bg-cta/90 text-cta-foreground font-medium"
           >
             Apply Now
           </Button>
