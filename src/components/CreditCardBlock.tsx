@@ -1,7 +1,7 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
-import { Star, Shield, Plane, Gift } from "lucide-react";
+import { Star, Shield, Plane, Gift, TrendingUp } from "lucide-react";
 
 interface CreditCardProps {
   name: string;
@@ -13,6 +13,7 @@ interface CreditCardProps {
   rating: number;
   highlight?: string;
   isPopular?: boolean;
+  className?: string;
 }
 
 const CreditCardBlock = ({ 
@@ -24,13 +25,15 @@ const CreditCardBlock = ({
   loungeAccess, 
   rating,
   highlight,
-  isPopular = false 
+  isPopular = false,
+  className = ""
 }: CreditCardProps) => {
   return (
-    <Card className="relative group hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border-border bg-card">
+    <Card className={`relative group hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border-border bg-card ${className}`}>
       {isPopular && (
         <div className="absolute -top-3 left-4 z-10">
-          <Badge className="bg-accent text-accent-foreground font-medium px-3 py-1">
+          <Badge variant="accent" className="font-medium px-3 py-1 shadow-sm">
+            <TrendingUp className="w-3 h-3 mr-1" />
             Most Popular
           </Badge>
         </div>
@@ -106,13 +109,14 @@ const CreditCardBlock = ({
           <Button 
             variant="outline" 
             size="sm" 
-            className="flex-1 font-medium border-border hover:bg-secondary"
+            className="flex-1 font-medium border-border hover:bg-secondary transition-all duration-200"
           >
             View Details
           </Button>
           <Button 
+            variant="cta"
             size="sm" 
-            className="flex-1 bg-cta hover:bg-cta/90 text-cta-foreground font-medium"
+            className="flex-1 font-medium"
           >
             Apply Now
           </Button>
